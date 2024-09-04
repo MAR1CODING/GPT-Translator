@@ -8,7 +8,7 @@ if(window.location.href.includes('chatgpt.com')) {
 function main() {
 
     // Obtains last Message
-    const answers = document.querySelectorAll( article > div >  )
+    const answers = document.querySelectorAll("article > div >  ")
     const messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
     //const oldmessages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.z-10.-mt-1.bg-token-main-surface-primary.md:absolute.md:border.md:border-token-border-light.md:sr-only > div.flex.items-center');
     const lastMessage = messages[messages.length-1]
