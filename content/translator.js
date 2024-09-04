@@ -6,7 +6,7 @@ const API_PROXY_URL = "https://us-central1-gpt-translator-434515.cloudfunctions.
 
 
 
-export async function getAvailableLanguages() {
+async function getAvailableLanguages() {
 
     const url = API_PROXY_URL+"/"
 
@@ -22,7 +22,7 @@ export async function getAvailableLanguages() {
 }
 
 
-export async function translate(language, text) {
+async function translate(language, text) {
 
     if(!language || !text)
         throw new Error("No language or text provided")
@@ -46,3 +46,4 @@ export async function translate(language, text) {
 
     return translated_text
 }
+

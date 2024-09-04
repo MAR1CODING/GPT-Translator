@@ -1,34 +1,39 @@
-import { translate } from 'translator.js'
 
-
-export class Article {
-    domAnswerArticle = null
+class Answer {
+    domAnswer = null
+    domAnswerText = null
     translateButton = null
 
 
-    toolBarSelector = 'div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center'
+    toolBarSelector = 'div:nth-child(2) > div'
 
 
-    constructor(domAnswerArticle) {
-        this.domAnswerArticle = domAnswerArticle
+    constructor(domAnswer) {
+        this.domAnswer = domAnswer
+        this.domAnswerText = domAnswer.querySelector('div:nth-child(1)')
 
+        console.log("Creating answer")
         this.generateTranslateButton()
         this.addTraslateButtonToToolbar()
     }
 
     addTraslateButtonToToolbar() {
         // Obtai toolbar from domAnswerArticle
-        const messageToolBar = this.domAnswerArticle.querySelector(this.toolBarSelector)
+        const messageToolBar = this.domAnswer.querySelector(this.toolBarSelector)
         messageToolBar.appendChild(this.translateButton)
     }
 
     generateTranslateButton() {
+        console.log("Creating button")
         this.translateButton = document.createElement('button')
         this.translateButton.innerHTML = "Translate"
+        this.translateButton.style.fontSize = "16px"
         this.translateButton.style.padding = "3px"
         this.translateButton.style.position = "relative"
         this.translateButton.style.justifyContent = "flex-end"
-        this.translateButton.style.backgroundColor = "#2f2f2f"
+        this.translateButton.style.backgroundColor = "black"
+        this.translateButton.style.padding = "8px 16px"
+        this.translateButton.style.borderRadius = "12px"
         this.translateButton.style.color = "#b4b4b4"
     }
 
@@ -43,10 +48,4 @@ export class Article {
         return this.domAnswerArticle.textContent
     }
     
-    
-    
 }
-
-
-
-

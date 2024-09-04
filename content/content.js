@@ -1,14 +1,28 @@
-import { Article } from './article.js'
 
 
 if(window.location.href.includes('chatgpt.com')) {
     setTimeout(() => main(), 1000)
 }
 
+
+var articles = [];
+
+
+
 function main() {
 
     // Obtains last Message
-    const answers = document.querySelectorAll("article > div >  ")
+    const answers = document.querySelectorAll("article > div >  div > div:nth-child(2) > div")
+
+    answers.forEach(answer => {
+        console.log("Element found: ", answer)
+        articles.push(new Answer(answer))
+    })
+
+    console.log(answers.length)
+
+/* 
+
     const messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
     //const oldmessages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.z-10.-mt-1.bg-token-main-surface-primary.md:absolute.md:border.md:border-token-border-light.md:sr-only > div.flex.items-center');
     const lastMessage = messages[messages.length-1]
@@ -81,10 +95,10 @@ function main() {
     lastMessage.appendChild(buttonWrapper)
     //oldmessages.appendChild(buttonWrapper)
     //oldmessages.appendChild(newButton)
-    injectDropdownMenu(buttonWrapper)
+    injectDropdownMenu(buttonWrapper) */
 
 }
-
+/* 
 // Function to create and inject the dropdown menu
 function injectDropdownMenu(buttonWrapper) {
     const dropdownHTML = `
@@ -220,4 +234,4 @@ function addButtonToMessage(message) {
 
     // Attach the hover event to the message
     addHoverButton(message);
-}
+} */
