@@ -1,8 +1,13 @@
 {
-	"manifest_version": 3,
+	"manifest_version":3,
 	"name": "ChatGpt translator",
 	"version": "1.0",
 	"description": "Translate your chatgpt conversations to your native language so you don't miss on the power of chatgpt",
+	"icons": {
+		"16": "GPT-TRANSLATOR.png",
+		"48": "GPT-TRANSLATOR.png",
+		"128": "GPT-TRANSLATOR.png"
+	},
 	"permissions": [
 		"activeTab",
 		"storage",
@@ -18,11 +23,7 @@
 				"<all_urls>"
 			],
 			"js": [
-<<<<<<< HEAD
-				"content/content.js", "content/answer.js", "content/translator.js", "content/translatingButton.js" ,"styles/style.js"
-=======
-				"content/content.js", "content/answer.js", "content/translator.js", "content/translatingButton.js"
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
+				"content/content.js", "content/answer.js", "content/translator.js", "content/translateButton.js" ,"styles/style.js" 
 			]
 		}
 	],

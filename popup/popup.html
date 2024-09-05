@@ -2,29 +2,62 @@
 <html>
 <head>
     <style>
+
+        
        body {
             width: 356px; /* Set the width according to your design */
-            height: 137px; /* Set the height according to your design */
+            height: 400px; /* Set the height according to your design */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 10px;
             box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            background-color: #72736b; 
+            border-radius: 7px;
+            
         }
 
         h1 {
-            font-size: 16px;
-            color: #333;
+            font-size: 26px;
+            color: #0f0f0f;
             margin: 0 0 10px 0;
             text-align: center;
         }
 
+        h2 {
+            font-size: 14px;
+            color: #1c1c1c;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+
+        }
+
+        
+        .logo {
+          
+            max-width: 100px;
+            height: auto;
+        }
+        .logo-container {
+            text-align: center; /* Center the logo horizontally */
+            margin-top: 10px; /* Optional: Add some space at the top */
+        }
+
         #actionButton {
             display: block;
-            width: 100%;
+            width: 200%;
+            height: 60%;
             padding: 10px;
-            font-size: 14px;
-            color: #fff;
-            background-color: #007bff; /* Blue background */
+            font-size: 24px;
+            color: #646464;
+            background-color: #a7a7a7; /* Blue background */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -32,13 +65,47 @@
         }
 
         #actionButton:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #888; /* Darker gray on hover */
+        }
+
+        .arrow-up {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #a7a7a7; /* Arrow color */
+            bottom: 100%; /* Position above the button */
+            margin-bottom: 5px; /* Space between button and arrow */
         }
     </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>Centered Button with Arrow</title>
+
+    
 </head>
+
+    <link rel="stylesheet" type="text/css" href="popup.css">
 <body>
-    <h1>My Extension</h1>
-    <button id="actionButton">Click me</button>
-    <script src="scripts/popup.js"></script>
+    <div class="logo-container">
+        <img src="GPT-TRANSLATOR.png" class="logo">
+    </div>
+
+    <h1>Welcome to ChatGPT Translator</h1>
+
+    <section id="selector-wrapper" class="language-selection">
+        <h2>Translate from any language to your preferred language</h2>
+        <select required name="language" id="languages-selector">
+            
+        </select>
+        <button id="select-button">
+          <h2>Select Language</h2>
+        </button>
+    </section>
+
+    <script type="module" src="scripts/popup.js"></script>
+    <script type="module" src="scripts/translator.js"></script>
 </body>
 </html>

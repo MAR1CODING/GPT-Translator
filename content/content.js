@@ -1,73 +1,36 @@
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 if(window.location.href.includes('chatgpt.com')) {
-    setTimeout(() => main(), 10000)
+    setTimeout(() => main(), 1000)
 }
 
-<<<<<<< HEAD
-var articles = [];
-
-=======
 
 var articles = [];
 
 
 
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 function main() {
-    
-    console.log('MAINNNNNNNNN')
-
-    const answers = document.querySelectorAll("article > div >  div > div:nth-child(2) > div")
-
-    answers.forEach(answer => {
-        console.log("Element found: ", answer)
-        articles.push(new Answer(answer))
-    })
-
-    console.log(answers.length)
-
-}   
-
-        // Step 1: Select the article element
-    /* const articleElement = document.querySelectorAll('article > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div.flex.items-center');
-
-    const lastOne = document.querySelectorAll('main > div > div > div > div > div > div:nth-child(3n+2)')
-
 
     // Obtains last Message
-<<<<<<< HEAD
-   // const answers = document.querySelectorAll( 'article > div > div > ...' )
-    //onst messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
-
-
-
-=======
     const answers = document.querySelectorAll("article > div >  div > div:nth-child(2) > div")
 
     answers.forEach(answer => {
-        console.log("Element found: ", answer)
         articles.push(new Answer(answer))
     })
 
-    console.log(answers.length)
 
 /* 
 
     const messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
     //const oldmessages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.z-10.-mt-1.bg-token-main-surface-primary.md:absolute.md:border.md:border-token-border-light.md:sr-only > div.flex.items-center');
-    //const lastMessage = messages[messages.length-1]
+    const lastMessage = messages[messages.length-1]
 
 
     // Creating button wrapper and button
     const buttonWrapper = document.createElement('span')
     const newButton = document.createElement('button')
-    */ 
-/* 
+    
+
 
     // Adding the styles for the wrapper
     buttonWrapper.style.width = "100%";
@@ -93,7 +56,21 @@ function main() {
         toggleDropdown();
     });
 
- 
+    function observeMessages() {
+        const chatContainer = document.querySelector('div[data-chat-container-selector]'); // Replace with the actual selector for the chat container
+        if (!chatContainer) return;
+    
+        const observer = new MutationObserver(() => {
+            const messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
+            messages.forEach((message) => {
+                if (!message.querySelector('.translate-button')) {
+                    addButtonToMessage(message);
+                }
+            });
+        });
+    
+        observer.observe(chatContainer, { childList: true, subtree: true });
+    }
     // Adding a CSS arrow to the button
     const arrow = document.createElement('span');
     
@@ -113,67 +90,14 @@ function main() {
 
     // Adding elements to the website dom
     buttonWrapper.appendChild(newButton)
-    
+    lastMessage.appendChild(buttonWrapper)
     //oldmessages.appendChild(buttonWrapper)
     //oldmessages.appendChild(newButton)
     injectDropdownMenu(buttonWrapper) */
 
-<<<<<<< HEAD
-    articleElement.appendChild(buttonWrapper)
-    
-
-}
-/*
-=======
 }
 /* 
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
-// Function to create and inject the dropdown menu
-function injectDropdownMenu(buttonWrapper) {
-    const dropdownHTML = `
-        <div id="languageDropdown" class="dropdown-content" style="display: none;">
-            <a href="#" onclick="window.selectLanguage('English')">English</a>
-            <a href="#" onclick="window.selectLanguage('French')">French</a>
-            <a href="#" onclick="window.selectLanguage('Spanish')">Spanish</a>
-            <a href="#" onclick="window.selectLanguage('German')">German</a>
-            <a href="#" onclick="window.selectLanguage('Italian')">Italian</a>
-        </div>
-    `;
 
-    // Create a container for the dropdown
-    const dropdownContainer = document.createElement('div');
-    dropdownContainer.innerHTML = dropdownHTML;
-    dropdownContainer.style.position = 'absolute';
-    dropdownContainer.style.zIndex = '1000';
-    // Append the dropdown to the button wrapper
-    buttonWrapper.appendChild(dropdownContainer);
-
-    // Inject the CSS
-    const style = document.createElement('style');
-    style.textContent = `
-        .dropdown-content {
-            position: absolute;
-            background-color: #2f2f2f;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1000;
-            top: 100%;
-            left: 0;
-        }
-        .dropdown-content a {
-            color: #b4b4b4;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #2f2f2f;
-        }
-    `;
-    document.head.appendChild(style);
-}
-*/
-/*
 // Make these functions global
 window.toggleDropdown = function() {
     console.log("Toggle dropdown called");
@@ -264,37 +188,4 @@ function addButtonToMessage(message) {
 
     // Attach the hover event to the message
     addHoverButton(message);
-<<<<<<< HEAD
-}
-
-function addSecondryButton(message) {
-
-
-    const buttonWrapper2 = document.createElement('span')
-    const newButton2 = document.createElement('button')
-    
-
-
-    // Adding the styles for the wrapper
-    buttonWrapper2.style.width = "100%";
-    buttonWrapper2.style.display = "grid"
-    buttonWrapper2.style.placeItems = "center end";
-
-    // Adding text to the button
-    newButton2.innerHTML = "testing"
-
-    // Adding the styles for the button
-    newButton2.style.padding = "3px"
-    newButton2.style.position = "relative"
-    newButton2.style.justifyContent = "flex-end";
-    newButton2.style.backgroundColor = "#2f2f2f"
-    newButton2.style.color = "#b4b4b4";
-    newButton2.style.border = "2px black"
-    newButton2.style.borderRadius = "4px"
-    newButton2.style.cursor = "pointer"
-
-*/
-
-=======
 } */
->>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb

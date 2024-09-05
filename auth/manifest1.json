@@ -1,0 +1,12 @@
+{
+    "name": "OAuth Tutorial FriendBlock",
+    "version": "1.0",
+    "description": "Uses OAuth to connect to Google's People API and display contacts photos.",
+    "manifest_version": 3,
+    "action": {
+      "default_title": "FriendBlock, friends face's in a block."
+    },
+    "background": {
+      "service_worker": "service-worker.js"
+    }
+  }
