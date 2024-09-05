@@ -18,7 +18,11 @@
 				"<all_urls>"
 			],
 			"js": [
+<<<<<<< HEAD
 				"content/content.js", "content/answer.js", "content/translator.js", "content/translatingButton.js" ,"styles/style.js"
+=======
+				"content/content.js", "content/answer.js", "content/translator.js", "content/translatingButton.js"
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 			]
 		}
 	],

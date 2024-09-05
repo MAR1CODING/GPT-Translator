@@ -1,9 +1,22 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 if(window.location.href.includes('chatgpt.com')) {
     setTimeout(() => main(), 10000)
 }
 
+<<<<<<< HEAD
 var articles = [];
 
+=======
+
+var articles = [];
+
+
+
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 function main() {
     
     console.log('MAINNNNNNNNN')
@@ -26,11 +39,26 @@ function main() {
 
 
     // Obtains last Message
+<<<<<<< HEAD
    // const answers = document.querySelectorAll( 'article > div > div > ...' )
     //onst messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
 
 
 
+=======
+    const answers = document.querySelectorAll("article > div >  div > div:nth-child(2) > div")
+
+    answers.forEach(answer => {
+        console.log("Element found: ", answer)
+        articles.push(new Answer(answer))
+    })
+
+    console.log(answers.length)
+
+/* 
+
+    const messages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.flex > div.flex.items-center');
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
     //const oldmessages = document.querySelectorAll('div.items-center.justify-start.rounded-xl.p-1.z-10.-mt-1.bg-token-main-surface-primary.md:absolute.md:border.md:border-token-border-light.md:sr-only > div.flex.items-center');
     //const lastMessage = messages[messages.length-1]
 
@@ -88,13 +116,18 @@ function main() {
     
     //oldmessages.appendChild(buttonWrapper)
     //oldmessages.appendChild(newButton)
-    injectDropdownMenu(buttonWrapper)
+    injectDropdownMenu(buttonWrapper) */
 
+<<<<<<< HEAD
     articleElement.appendChild(buttonWrapper)
     
 
 }
 /*
+=======
+}
+/* 
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
 // Function to create and inject the dropdown menu
 function injectDropdownMenu(buttonWrapper) {
     const dropdownHTML = `
@@ -231,6 +264,7 @@ function addButtonToMessage(message) {
 
     // Attach the hover event to the message
     addHoverButton(message);
+<<<<<<< HEAD
 }
 
 function addSecondryButton(message) {
@@ -261,3 +295,6 @@ function addSecondryButton(message) {
 
 */
 
+=======
+} */
+>>>>>>> 31161001ec9c3b69feb2e8842fee20ec064089fb
