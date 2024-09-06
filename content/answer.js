@@ -1,5 +1,7 @@
 
 class Answer {
+    error = false
+
     domAnswer = null
     translateButton = null
 
@@ -14,6 +16,10 @@ class Answer {
         this.domAnswerContent = domAnswer.querySelector(this.contentSelector)
 
         const toolBar = this.domAnswer.querySelector(this.toolBarSelector)
+        if(!toolBar){ 
+            this.error = true
+            return;
+        }
         const buttonWrapper = document.createElement('div')
         toolBar.appendChild(buttonWrapper)
         
@@ -22,31 +28,39 @@ class Answer {
         this.translateButton.button.addEventListener('click', async (event) => {
             // this.translateButton.injectDropdownMenu()
             const language = await chrome.storage.local.get('language')
-            this.translateArticle(language['language'])
+            this.translateContent(language['language'])
+
         })
     }
 
-    async translateArticle(to_language) {
-        const articleContent = this.getContent()
+    async translateContent(to_language) {
+        console.log("To language: ", to_language)
+        const articleContent = this.domAnswerContent.innerHTML
 
         const result = await translate(to_language , articleContent)
 
-        console.log("dom answer: ", this.domAnswerContent)
-
         const translatedHTML = document.createElement("div")
+        translatedHTML.style.marginRight="-100px"
+        translatedHTML.style.width="460px"
 
-        translatedHTML.innerHTML=`  
-            <h3>Translated text</h3>
-            <p style="height=500px">'${result}'</p>
-        `
+        translatedHTML.innerHTML+='<div>'+result+'</div>'
+
+        const currentContent = this.domAnswerContent.querySelector('div')
+        
+        currentContent.style.marginLeft ="-100px"
+        currentContent.style.width ="460px"
+
+
 
         this.domAnswerContent.appendChild(translatedHTML)
+
+        this.domAnswerContent.style.display="grid"
+        this.domAnswerContent.style.gridTemplateColumns="1fr 1fr"
+        this.domAnswerContent.style.gap="20px"
+        this.domAnswerContent.style.marginTop="60px"
 
         this.translateButton.buttonWrapper.innerHTML = ""
     }
 
-    getContent() {
-        return this.domAnswerContent.innerHTML
-    }
 
 }

@@ -18,59 +18,50 @@ class TranslateButton {
 
     generateTranslateButton(wrapper) {
         const button = document.createElement('button')
-        button.innerHTML = "Translate"
-        button.style.fontSize = "16px"
-        button.style.padding = "3px"
+        
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                fill="#FFFFFF" 
+                width="16px" height="16px" 
+                viewBox="0 0 52 52">
+                <path d="M39,18.67H35.42l-4.2,11.12A29,29,0,0,1,20.6,24.91a28.76,28.76,0,0,0,7.11-14.49h5.21a2,2,0,0,0,0-4H19.67V2a2,2,0,1,0-4,0V6.42H2.41a2,2,0,0,0,0,4H7.63a28.73,28.73,0,0,0,7.1,14.49A29.51,29.51,0,0,1,3.27,30a2,2,0,0,0,.43,4,1.61,1.61,0,0,0,.44-.05,32.56,32.56,0,0,0,13.53-6.25,32,32,0,0,0,12.13,5.9L22.83,52H28l2.7-7.76H43.64L46.37,52h5.22Zm-15.3-8.25a23.76,23.76,0,0,1-6,11.86,23.71,23.71,0,0,1-6-11.86Zm8.68,29.15,4.83-13.83L42,39.57Z"/>
+            </svg>`
+
+        button.style.display="grid"
+        button.style.gridTemplateColumns="auto 1fr"
+        button.style.gap="8px"
         button.style.position = "relative"
         button.style.justifyContent = "flex-end"
-        button.style.backgroundColor = "black"
-        button.style.padding = "8px 16px"
-        button.style.borderRadius = "12px"
+        button.style.alignItems = "center"
+        button.style.backgroundColor = "#292929"
+        button.style.padding = "4px 8px"
+        button.style.borderRadius = "8px"
         button.style.color = "#b4b4b4"
+        button.style.transition = ".2s"
+
+        const buttonText = document.createElement('span')
+        buttonText.innerHTML='T'
+        buttonText.style.color="#292929"
+        buttonText.style.transition=".2s"
+        buttonText.style.fontSize = "12px"
+        buttonText.style.margin="0"
+        buttonText.style.padding="0"
+
+        button.appendChild(buttonText)
+
+        button.addEventListener('mouseover', () => {
+            buttonText.innerHTML='Translate'
+            buttonText.style.color="white"
+            buttonText.style.marginLeft="10px"
+        })
+
+
+        button.addEventListener('mouseleave', () => {
+        buttonText.style.color="#292929"
+            buttonText.innerHTML='T'
+            buttonText.style.marginLeft="0"
+        })
         return button
-    }
-
-
-    // Function to create and inject the dropdown menu
-    async injectDropdownMenu() {
-        const dropdownHTML = document.createElement('div')
-        dropdownHTML.classList.add('dropdown-content')
-        dropdownHTML.style.display = 'none'
-
-        //const availableLanguages = await getAvailableLanguages()
-
-
-        // Create a container for the dropdown
-        const dropdownContainer = document.createElement('div');
-        dropdownContainer.appendChild(dropdownHTML);
-        dropdownContainer.style.position = 'absolute';
-        dropdownContainer.style.zIndex = '1000';
-        // Append the dropdown to the button wrapper
-        this.buttonWrapper.appendChild(dropdownContainer);
-
-        // Inject the CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            .dropdown-content {
-                position: absolute;
-                background-color: #2f2f2f;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1000;
-                top: 100%;
-                left: 0;
-            }
-            .dropdown-content a {
-                color: #b4b4b4;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-            .dropdown-content a:hover {
-                background-color: #2f2f2f;
-            }
-        `;
-        document.head.appendChild(style);
     }
 
 }
