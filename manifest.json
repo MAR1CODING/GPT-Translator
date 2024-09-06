@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "ChatGpt translator",
-	"version": "1.0",
+	"version": "0.5",
 	"description": "Translate your chatgpt conversations to your native language so you don't miss on the power of chatgpt",
 	"permissions": [
 		"activeTab",
