@@ -22,7 +22,10 @@
 				"<all_urls>"
 			],
 			"js": [
-				"content/content.js", "content/answer.js", "content/translator.js", "content/translateButton.js"
+				"content/content.js", 
+				"content/answer.js", 
+				"content/translator.js", 
+				"content/translateButton.js"
 			]
 		}
 	],

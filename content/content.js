@@ -10,7 +10,6 @@ var answer_ids = []
 
 
 const answerSelector = "article > div >  div > div:nth-child(2) > div"
-const toolBarSelector = "div:nth-child(2) > div"
 
 
 function main() {

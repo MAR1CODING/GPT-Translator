@@ -137,3 +137,34 @@ section select option {
     background-color: #00a251;
     cursor: pointer;
 }
+
+
+#language-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background-color: #e7f3ff;
+}
+
+#languages-list {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+    height: 120px;
+    overflow-y: scroll;
+}
+
+#languages-list li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#languages-list li:hover {
+    list-style: none;
+    background-color: #e7f3ff;
+}

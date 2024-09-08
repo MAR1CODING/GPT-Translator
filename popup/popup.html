@@ -14,13 +14,15 @@
     <p>Selected language: <br/><span id="selected-language"></span></p>	
 
     <section id="selector-wrapper" class="language-selection">
-        <label>Select your language</label>
-        <select required name="language" id="languages-selector">
+        <label for="language">Filter languages</label>
+        
+        <input type="text" id="language-input" placeholder="Type your language"/>
+        <ul id="languages-list">
+
+        </ul>
+        <!-- <select required name="language" id="languages-selector">
             
-        </select>
-        <button id="select-button">
-            Select
-        </button>
+        </select> -->
     </section>
 
     <script type="module" src="scripts/popup.js"></script>

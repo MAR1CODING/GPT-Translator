@@ -1,66 +1,75 @@
 // scripts/popup.js
-import { getAvailableLanguages } from "./translator.js"
+import { getAvailableLanguages } from "./translator.js";
 
+const selectedLanguageHTML = document.getElementById('selected-language');
+const languageInput = document.getElementById('language-input');
+const languagesList = document.getElementById('languages-list');
 
-const selectedLanguageHTML = document.getElementById('selected-language')
+let availableLanguages;
+let currentLanguage;
 
-
-const languagesSelector = document.getElementById('languages-selector')
-const selectButton = document.getElementById('select-button')
-
-async function setUpLanguagesSelector() {
-    const availableLanguages = await getAvailableLanguages()
-
-    if (!availableLanguages) {
-        throw new Error("An error occourred obtaining available languages")
+async function setUpLanguagesList(languages) {
+    if (!languages || languages.length === 0) {
+        throw new Error("No available languages provided");
     }
 
-    let language = await chrome.storage.local.get('language')
+    languagesList.innerHTML = "";
 
-    console.log("Language: ", language)
-    if (!language) {
-        await chrome.storage.local.set({ 
-            'language': 'es',
-         })
-        language = 'es'
-    }
+    languages.forEach(lang => {
+        const item = document.createElement('li');
+        item.textContent = lang.name;
 
-    availableLanguages.forEach(_language => {
-        const option = document.createElement('option')
-        option.value = _language["language"]
-        option.innerHTML = _language["name"]
+        item.addEventListener('click', () => selectLanguage(lang.language));
 
-        if (_language["language"] === language['language']){
-            selectedLanguageHTML.innerHTML = _language['name']
-            option.selected = true
-        }
-        languagesSelector.appendChild(option)
+        languagesList.appendChild(item);
     });
 }
 
+async function initializeLanguage() {
+    availableLanguages = await getAvailableLanguages();
+    const storedLanguage = await chrome.storage.local.get('language');
 
-setUpLanguagesSelector()
+    currentLanguage = storedLanguage.language || 'es';
 
-
-
-async function selectLanguage() {
-    const language = (await getAvailableLanguages())
-    .find(_language => _language['language'] === languagesSelector.value)
-
-    if (language) {
-        await chrome.storage.local.set({ 'language': language['language'] })
-        return language
+    if (!storedLanguage.language) {
+        await chrome.storage.local.set({
+            language: 'es',
+            name: 'Spanish'
+        });
     }
-    return null
+
+    const current = availableLanguages.find(lang => lang.language === currentLanguage);
+
+    if (!current) {
+        throw new Error(`Language ${currentLanguage} not found in available languages`);
+    }
+
+    selectedLanguageHTML.textContent = current.name;
+    await setUpLanguagesList(availableLanguages);
 }
 
+languageInput.addEventListener('input', (event) => {
+    if (!availableLanguages) return;
 
-selectButton.addEventListener('click', async () => {
-    let language = await selectLanguage()
+    const filteredLanguages = availableLanguages.filter(lang =>
+        lang.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setUpLanguagesList(filteredLanguages);
+});
 
-    if(language) {
-        selectedLanguageHTML.innerHTML = language['name']
+async function selectLanguage(languageId) {
+    const language = availableLanguages.find(lang => lang.language === languageId);
+
+    if (language) {
+        await chrome.storage.local.set(language);
+        selectedLanguageHTML.textContent = language.name;
+        languageInput.value = "";
+        await setUpLanguagesList(availableLanguages);
+        return language;
     }
 
-})
+    console.error(`Language ${languageId} not found`);
+    return null;
+}
 
+initializeLanguage();
