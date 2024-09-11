@@ -1,7 +1,3 @@
-
-
-
-
 class TranslateButton {
     buttonWrapper = null
     button = null
@@ -27,40 +23,50 @@ class TranslateButton {
                 <path d="M39,18.67H35.42l-4.2,11.12A29,29,0,0,1,20.6,24.91a28.76,28.76,0,0,0,7.11-14.49h5.21a2,2,0,0,0,0-4H19.67V2a2,2,0,1,0-4,0V6.42H2.41a2,2,0,0,0,0,4H7.63a28.73,28.73,0,0,0,7.1,14.49A29.51,29.51,0,0,1,3.27,30a2,2,0,0,0,.43,4,1.61,1.61,0,0,0,.44-.05,32.56,32.56,0,0,0,13.53-6.25,32,32,0,0,0,12.13,5.9L22.83,52H28l2.7-7.76H43.64L46.37,52h5.22Zm-15.3-8.25a23.76,23.76,0,0,1-6,11.86,23.71,23.71,0,0,1-6-11.86Zm8.68,29.15,4.83-13.83L42,39.57Z"/>
             </svg>`
 
-        button.style.display="grid"
-        button.style.gridTemplateColumns="auto 1fr"
-        button.style.gap="8px"
-        button.style.position = "relative"
-        button.style.justifyContent = "flex-end"
+        button.style.display = "flex"
         button.style.alignItems = "center"
+        button.style.marginLeft = "4px"
+        button.style.position = "relative"
         button.style.backgroundColor = "#292929"
-        button.style.padding = "4px 8px"
-        button.style.borderRadius = "8px"
+        button.style.padding = "8px 8px"
+        button.style.borderRadius = "14px"
         button.style.color = "#b4b4b4"
         button.style.transition = ".2s"
+        button.style.width = "26px"
+        
+        button.style.height = "30px"
+        button.style.overflow = "hidden"
+
+        const svgWrapper = document.createElement('div')
+        svgWrapper.innerHTML = button.innerHTML
+        svgWrapper.style.flexShrink = "0"
+        svgWrapper.style.marginLeft = "-2px"
+        button.innerHTML = ''
+        button.appendChild(svgWrapper)
 
         const buttonText = document.createElement('span')
-        buttonText.innerHTML='T'
-        buttonText.style.color="#292929"
-        buttonText.style.transition=".2s"
-        buttonText.style.fontSize = "12px"
-        buttonText.style.margin="0"
-        buttonText.style.padding="0"
+        buttonText.innerHTML = ''
+        buttonText.style.marginLeft = "6px"
+        buttonText.style.opacity = "0"
+        buttonText.style.transition = "opacity .2s"
+        buttonText.style.whiteSpace = "nowrap"
+        buttonText.style.fontSize = "13px"
+       
 
         button.appendChild(buttonText)
 
         button.addEventListener('mouseover', () => {
-            buttonText.innerHTML='Translate'
-            buttonText.style.color="white"
-            buttonText.style.marginLeft="10px"
+            button.style.width = "auto"
+            buttonText.style.opacity = "1"
+            buttonText.innerHTML = 'Translate'
+            buttonText.style.color = "#FFFFFF"
         })
-
 
         button.addEventListener('mouseleave', () => {
-        buttonText.style.color="#292929"
-            buttonText.innerHTML='T'
-            buttonText.style.marginLeft="0"
+            button.style.width = "26px"
+            buttonText.style.opacity = "0"
         })
+
         return button
     }
 

@@ -9,19 +9,32 @@
 		<img src="../images/icon-128.png" alt="xsleads.com"/>
         <span>ChatGpt Translator</span>
     </div>
-
-    <h2>Get your answers in your preferred language</h2>
+    <!--
+    <h2>Get your answers in your favorite language:</h2>
     <p>Selected language: <br/><span id="selected-language"></span></p>	
-
-    <section id="selector-wrapper" class="language-selection">
-        <label>Select your language</label>
-        <select required name="language" id="languages-selector">
-            
-        </select>
-        <button id="select-button">
-            Select
+    -->
+    <h2>Choose your language:</h2>
+    <div class="dropdown">
+        <button id="dropdownButton" class="dropbtn" >
+            <span id="selected-language">Search</span>
+            <span id="loading-indicator" style="display: none;">Loading...</span>
         </button>
-    </section>
+        <div id="myDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="language-input">
+            <ul id="languages-list"></ul>
+        </div>
+    </div>
+   <!-- <section id="selector-wrapper" class="language-selection">
+        <label for="language">Search:</label>
+        
+        <input type="text" id="language-input" placeholder="Search for your language"/>
+        <ul id="languages-list">
+
+        </ul>
+         <select required name="language" id="languages-selector">
+            
+        </select> -->
+    <!-- </section> -->
 
     <script type="module" src="scripts/popup.js"></script>
     <script type="module" src="scripts/translator.js"></script>

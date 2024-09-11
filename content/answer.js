@@ -8,7 +8,7 @@ class Answer {
     contentSelector = 'div:nth-child(1)'
     domAnswerContent = null
 
-    toolBarSelector = 'div:nth-child(2) > div'
+    toolBarSelector = 'div.mt-1:nth-child(2) > div.p-1'
 
 
     constructor(domAnswer) {
@@ -16,6 +16,7 @@ class Answer {
         this.domAnswerContent = domAnswer.querySelector(this.contentSelector)
 
         const toolBar = this.domAnswer.querySelector(this.toolBarSelector)
+
         if(!toolBar){ 
             this.error = true
             return;
@@ -49,8 +50,6 @@ class Answer {
         
         currentContent.style.marginLeft ="-100px"
         currentContent.style.width ="460px"
-
-
 
         this.domAnswerContent.appendChild(translatedHTML)
 

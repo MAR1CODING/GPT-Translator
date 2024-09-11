@@ -1,139 +1,131 @@
-
-
-
 :root {
-    --red: rgb(55, 83, 168);
-    
-}
-
-body {
+    --primary: #bb86fc;
+    --secondary: #03dac6;
+    --background: #121212;
+    --surface: #1e1e1e;
+    --text: #ffffff;
+  }
+  
+  body {
     width: 360px;
-    /* Set the width according to your design */
-    /* Set the height according to your design */
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-}
-
-
-.logo {
-    justify-self: flex-start;
+    background-color: var(--background);
+    color: var(--text);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    min-height: 200px; /* Minimum height when closed */
+    max-height: 600px; /* Maximum height when open */
+  }
+  
+  .logo {
+    display: flex;
     align-items: center;
-    background-color: white;
-    padding: 8px 12px;
-    border-radius: 12px;
-}
-.logo img {
-    width: 24px;
-    margin-right: 10px;
-}
-
-.logo span {
-    font-size: 18px;
-    font-weight: bold;
-
-    background: linear-gradient(45deg, black, rgb(0, 64, 212));
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-h2 {
+    margin-bottom: 24px;
+  }
+  
+  .logo img {
+    width: 36px;
+    margin-right: 12px;
+    /* Removed the filter to show original logo colors */
+  }
+  
+  .logo span {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .dropbtn {
+    background-color: var(--surface);
+    color: var(--primary);
+    padding: 14px 18px;
     font-size: 16px;
-    color: #333;
-    margin: 20px 0;
-}
-
-
-p {
-    font-size: 12px;
-    margin-bottom: 10px;
-    line-height: 2em;
-}
-
-p > span {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-
-section {
-    margin: 20px 0;
-}
-
-section label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-section select {
-    width: 100%;
-    padding: 10px;
-    background-color: #ececec;
-    border: none;
-    outline: none;
-    border-radius: 12px;
-}
-
-section select option {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#select-button {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    padding: 6px 12px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #007bff;
-    /* Blue background */
-    border: none;
-    border-radius: 5px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: left;
+  }
+  .dropbtn::after {
+    content: attr(data-text); /* Use data-text attribute for default text */
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary);
+    font-size: 16px;
+    white-space: nowrap;
+    pointer-events: none; /* Avoid blocking button clicks */
+    transition: opacity 0.1s;
+    width: 100%;
+    text-align: center;
+    margin-right: 0px;
 }
-
-#select-button:hover {
-    background-color: #0044a3;
-    /* Darker blue on hover */
-}
-
-
-#select-button:active {
-    background-color: #000a53;
+  
+  .dropbtn:hover, .dropbtn:focus {
+   
+    background-color: var(--primary);
+    color: var(--primary);
+  }
+  .dropbtn:hover::after, .dropbtn:focus::after {
+    content: "Change the language"; /* Move content change to the ::after pseudo-element */
+    color: var(--surface)
     
-    /* Darker blue on hover */
-}
-
-#message  {
-    background-color: rgb(215, 255, 215);
-    padding: 10px;
-    border-radius: 12px;
-    display: none;
-    margin-top: 40px;
-}
-
-
-#message button {
-    font-size: 12px;
+    
+   
+  }
+  .dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  #language-input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--surface);
     border: none;
     outline: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    padding: 2px;
-    background-color: #005337;
-    color: white;
-    float: right;
-    margin: -20px -20px 0 0;
-}
-
-#message button:hover {
-    background-color: #00a251;
-    cursor: pointer;
-}
+    border-radius: 8px;
+    color: var(--text);
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .dropdown-content {
+    background-color: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  #languages-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  #languages-list li {
+    padding: 12px 18px;
+    transition: background-color 0.2s;
+  }
+  
+  #languages-list li:hover {
+    background-color: rgba(187, 134, 252, 0.1);
+  }
+  
+  /* Add this to ensure the content is scrollable */
+  .content {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  .show {
+    display: block;
+  }
