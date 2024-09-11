@@ -69,6 +69,8 @@ languageInput.addEventListener('input', filterFunction);
 
 async function selectLanguage(languageId) {
     const language = availableLanguages.find(lang => lang.language === languageId);
+async function selectLanguage(languageId) {
+    const language = availableLanguages.find(lang => lang.language === languageId);
 
     if (language) {
         await chrome.storage.local.set(language);
