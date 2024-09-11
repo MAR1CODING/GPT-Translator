@@ -84,8 +84,8 @@ async function selectLanguage(languageId) {
 
     console.error(`Language ${languageId} not found`);
     return null;
+    }
 }
-
 
 function filterFunction() {
     const filter = languageInput.value.toUpperCase();
