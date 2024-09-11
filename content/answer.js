@@ -31,7 +31,7 @@ class Answer {
             const language = await chrome.storage.local.get('language')
             this.translateContent(language['language'])
 
-        })
+        });
     }
 
     async translateContent(to_language) {

@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', initializeLanguage);
 
 languageInput.addEventListener('input', filterFunction);
 
-async function selectLanguage(languageId) {
-    const language = availableLanguages.find(lang => lang.language === languageId);
+
 async function selectLanguage(languageId) {
     const language = availableLanguages.find(lang => lang.language === languageId);
 
@@ -84,8 +83,8 @@ async function selectLanguage(languageId) {
 
     console.error(`Language ${languageId} not found`);
     return null;
-    }
-}
+   }
+
 
 function filterFunction() {
     const filter = languageInput.value.toUpperCase();
