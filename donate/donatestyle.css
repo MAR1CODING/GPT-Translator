@@ -1,0 +1,161 @@
+:root {
+    --new: #6c00f8;
+    --primary: #bb86fc;
+    --secondary: #cfb2e1;
+    --background: #0f0017;
+    --surface: #1e1e1e;
+    --text: #ffffff;
+}
+
+/* General Styles */
+html, body {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*background-image: url("background3.png");*/
+    background: linear-gradient(45deg, var(--new), var(--surface));
+    background-position: center;
+    background-size: cover;
+    
+}
+
+
+/* Logo and Title Container */
+.logo-wrapper {
+   
+    display: flex;
+    align-items: center; /* Align logo and title on the same line */
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom:50px; /* Add spacing below the logo and title */
+}
+
+/* Logo */
+.logo {
+    width: 100px; /* Adjust logo size as necessary */
+    height: auto;
+    margin-right: 10px; /* Add spacing between the logo and title */
+}
+
+/* Title */
+.title {
+    font-size: 3.5rem; /* Keep it larger than other text */
+    color: var(--primary);
+}
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    place-items: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5rem;
+    color: var(--new);
+    margin: 15px 0;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h3 {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin: 15px 0;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Paragraph Text */
+p {
+   
+    font-size: 1rem;
+    font-weight: lighter;
+    text-align: center;
+    line-height: 1.5rem;
+    color: var(--text);
+    margin: 100px 20px 20px 20px;
+    max-width: 600px;
+    opacity: .8;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+/* Ethereum Link */
+h2 a {
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-top: 100px;
+   text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h2 a:hover {
+    text-decoration: underline;
+}
+
+/* Donate Button */
+.donate-button {
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.donate-button:hover {
+    background-color: #5348c9;
+}
+.copy-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    /* Remove absolute positioning */
+    margin: 0 auto; /* Center horizontally */
+    background-color: #6C63FF; /* Purple background */
+    color: #ffffff; /* White text */
+    padding: 15px 30px; /* Increase padding by 50% */
+    font-size: 1.3rem;
+    margin-top: 50px; 
+
+}
+
+
+.copy-button svg {
+    width: 1.5em; /* Increase the SVG size */
+    height: 1.5em;
+    fill: #ffffff; 
+    fill: #6C63FF !important; /* Use the purple color from your previous CSS */
+  }
+  
+  .copy-button:hover svg {
+    fill: #5348c9 !important; /* Darker purple on hover */
+  }

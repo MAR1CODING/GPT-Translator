@@ -129,3 +129,33 @@
   .show {
     display: block;
   }
+  .expand-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+.expand-btn:hover {
+    color: #000;
+}
+.donate-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.donate-btn svg {
+  fill: #6C63FF; /* Use the purple color from your previous CSS */
+}
+
+.donate-btn:hover svg {
+  fill: #5348c9; /* Darker purple on hover */
+}

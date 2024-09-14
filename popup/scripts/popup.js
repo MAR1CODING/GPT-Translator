@@ -125,3 +125,9 @@ window.onclick = function(event) {
 }
 
 initializeLanguage();
+
+document.getElementById('donateButton').addEventListener('click', () => {
+    const extensionId = chrome.runtime.id; // Get the extension's ID dynamically
+    const url = `chrome-extension://${extensionId}/donate/donate.html`; // Path to the new page
+    chrome.tabs.create({ url });
+});

@@ -32,6 +32,12 @@
 	"action": {
 		"default_popup": "popup/popup.html"
 	},
+	"web_accessible_resources": [
+		{
+			"resources": [ "donate.html" ],
+			"matches": [ "<all_urls>" ]
+		}
+  	],
 	"host_permissions": [
 		"https://gpt-translator-207295841696.us-central1.run.app/"
 	]
