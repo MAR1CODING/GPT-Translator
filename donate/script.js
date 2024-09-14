@@ -1,24 +1,20 @@
 
 
 
-const ethAddress = '0x778B0920333208482E4C4B883e4A8592a1d5b036';
+const ethAddress = '0x70d01Fa89134BB4A285788103fc448b21e74bf7D';
+const solAddress = '6968VpU1hyW6bwzPxyD3gV2YDWFzRsFyTyY3tpbeqLr3';
 
+let copyButtonEth = document.getElementById('copy-eth');
+copyButtonEth.addEventListener('click', () => copyToClipboard(ethAddress));
 
-let copyButton = document.getElementById('copy')
-copyButton.addEventListener('click', copyToClipboard)
-
-
+let copyButtonSol = document.getElementById('copy-sol');
+copyButtonSol.addEventListener('click', () => copyToClipboard(solAddress));
 
 // script.js
-function copyToClipboard() {
+function copyToClipboard(address) {
     console.log('Button clicked'); // Debugging line
-    navigator.clipboard.writeText(ethAddress).then(() => {
+    navigator.clipboard.writeText(address).then(() => {
         console.log('Text copied'); // Debugging line
-        copyButton.textContent = 'Address copied';
-        setTimeout(() => {
-            copyButton.textContent = 'Copy Address';
-        }, 5000);
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
-    });
+        
+    })
 }

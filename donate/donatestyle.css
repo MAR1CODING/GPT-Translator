@@ -2,7 +2,7 @@
     --new: #6c00f8;
     --primary: #bb86fc;
     --secondary: #cfb2e1;
-    --background: #0f0017;
+    --background: #360451;
     --surface: #1e1e1e;
     --text: #ffffff;
 }
@@ -15,7 +15,7 @@ html, body {
     margin: 0;
     padding: 0;
     /*background-image: url("background3.png");*/
-    background: linear-gradient(45deg, var(--new), var(--surface));
+    background: linear-gradient(45deg, var(--background), var(--surface));
     background-position: center;
     background-size: cover;
     
@@ -113,7 +113,20 @@ h2 a {
 h2 a:hover {
     text-decoration: underline;
 }
+h4 a {
+    font-size: 1.6rem;
+    color: var(--text);
+    padding: 10px;
+   text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
 
+h4 a:hover {
+    text-decoration: underline;
+}
 /* Donate Button */
 .donate-button {
     background-color: #6C63FF;
@@ -133,18 +146,16 @@ h2 a:hover {
     background-color: #5348c9;
 }
 .copy-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+   
+    background: none;
+    border: none;
     /* Remove absolute positioning */
     margin: 0 auto; /* Center horizontally */
-    background-color: #6C63FF; /* Purple background */
+    
     color: #ffffff; /* White text */
     padding: 15px 30px; /* Increase padding by 50% */
     font-size: 1.3rem;
-    margin-top: 50px; 
+   
 
 }
 
@@ -157,5 +168,32 @@ h2 a:hover {
   }
   
   .copy-button:hover svg {
-    fill: #5348c9 !important; /* Darker purple on hover */
+    fill: #230139 !important; /* Darker purple on hover */
+    background: rgba(128, 131, 132, 0.24); /* Darker purple on hover */
   }
+
+  .addresseth {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align vertically center */
+    justify-content: center;
+  }
+  .addresseth h2 a:hover{
+    text-decoration: underline;
+  }
+
+
+.addresseth button {
+    margin-top: 100px;
+    margin-left: 20px; /* Ensure button is separated from the text */
+}
+.addresssol {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align vertically center */
+    justify-content: center;
+  }
+
+.addresssol h2{
+    margin-top: -100px;
+}
