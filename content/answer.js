@@ -38,29 +38,63 @@ class Answer {
 
 
     async translateContent(to_language) {
-        
-        const articleContent = this.domAnswerContent.innerHTML
+        console.log("To language: ", to_language);
 
-        const result = await translate(to_language, articleContent)
+        // Clone the content
+        const contentToTranslate = this.domAnswerContent.cloneNode(true);
 
-        const translatedHTML = document.createElement("div")
-        translatedHTML.style.marginRight = "-100px"
-        translatedHTML.style.width = "460px"
+        // Store code blocks
+        const codeBlocks = [];
+        contentToTranslate.querySelectorAll('pre').forEach((pre, index) => {
+            codeBlocks.push(pre.outerHTML);
+            pre.outerHTML = `<pre id="code-block-${index}"></pre>`;
+        });
 
-        translatedHTML.innerHTML += '<div>' + result + '</div>'
+        // Get the HTML content without code blocks
+        let htmlContent = contentToTranslate.innerHTML;
 
-        const currentContent = this.domAnswerContent.querySelector('div')
+        // Translate the HTML content
+        const translatedHTML = await translate(to_language, htmlContent);
 
-        currentContent.style.marginLeft = "-100px"
-        currentContent.style.width = "460px"
+        // Create a temporary element to hold the translated content
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = translatedHTML;
 
-        this.domAnswerContent.appendChild(translatedHTML)
+        // Reinsert code blocks
+        codeBlocks.forEach((codeBlock, index) => {
+            const placeholder = tempElement.querySelector(`#code-block-${index}`);
+            if (placeholder) {
+                placeholder.outerHTML = codeBlock;
+            }
+        });
 
-        this.domAnswerContent.style.display = "grid"
-        this.domAnswerContent.style.gridTemplateColumns = "1fr 1fr"
-        this.domAnswerContent.style.gap = "20px"
-        this.domAnswerContent.style.marginTop = "60px"
+        // Create the translated content container
+        const translatedContainer = document.createElement("div");
+        translatedContainer.className = 'translated-content';
+        translatedContainer.style.marginRight = "-100px";
+        translatedContainer.style.width = "460px";
+        translatedContainer.innerHTML = tempElement.innerHTML;
+
+        // Remove any existing translated content
+        const existingTranslation = this.domAnswerContent.querySelector('.translated-content');
+        if (existingTranslation) {
+            existingTranslation.remove();
+        }
+
+        // Adjust the original content
+        const currentContent = this.domAnswerContent.querySelector('div');
+        currentContent.style.marginLeft = "-100px";
+        currentContent.style.width = "460px";
+
+        // Append the new translated content
+        this.domAnswerContent.appendChild(translatedContainer);
+
+        // Adjust the layout
+        this.domAnswerContent.style.display = "grid";
+        this.domAnswerContent.style.gridTemplateColumns = "1fr 1fr";
+        this.domAnswerContent.style.gap = "20px";
+        this.domAnswerContent.style.marginTop = "60px";
+
+        this.translateButton.buttonWrapper.innerHTML = "";
     }
-
-
 }

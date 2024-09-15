@@ -1,69 +1,57 @@
 :root {
-	--primary: #bb86fc;
-	--secondary: #03dac6;
-	--background: #121212;
-	--surface: #1e1e1e;
-	--text: #ffffff;
-}
-
-body {
-	width: 360px;
-	font-family: 'Inter', sans-serif;
-	margin: 0;
-	padding: 20px;
-	box-sizing: border-box;
-	background-color: var(--background);
-	color: var(--text);
-	display: flex;
-	flex-direction: column;
-	min-height: 200px;
-	/* Minimum height when closed */
-	max-height: 600px;
-	/* Maximum height when open */
-}
-
-.logo {
-	display: flex;
-	align-items: center;
-	margin-bottom: 24px;
-}
-
-.logo img {
-	width: 36px;
-	margin-right: 12px;
-	/* Removed the filter to show original logo colors */
-}
-
-.logo span {
-	font-size: 22px;
-	font-weight: 600;
-	color: var(--text);
-}
-
-
-
-#extension {
-	display: none;
-}
-
-
-
-.dropbtn {
-	background-color: var(--surface);
-	color: var(--primary);
-	padding: 14px 18px;
-	font-size: 16px;
-	border: 2px solid var(--primary);
-	border-radius: 8px;
-	cursor: pointer;
-	transition: all 0.3s;
-	width: 100%;
-	text-align: left;
-}
-
-.dropbtn::after {
-	content: attr(data-text);
-	/* Use data-text attribute for default text */
+    --primary: #bb86fc;
+    --secondary: #03dac6;
+    --background: #121212;
+    --surface: #1e1e1e;
+    --text: #ffffff;
+  }
+  
+  body {
+    width: 360px;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px 20px 10px 20px;
+    box-sizing: border-box;
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px; /* Minimum height when closed */
+    max-height: 600px; /* Maximum height when open */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .logo img {
+    width: 36px;
+    margin-right: 12px;
+    /* Removed the filter to show original logo colors */
+  }
+  
+  .logo span {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .dropbtn {
+    background-color: var(--surface);
+    color: var(--primary);
+    padding: 14px 18px;
+    font-size: 16px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: left;
+  }
+  .dropbtn::after {
+    content: attr(data-text); /* Use data-text attribute for default text */
 
 	top: 50%;
 	left: 50%;
@@ -180,6 +168,19 @@ body {
 }
 
 .donate-btn:hover svg {
-	fill: #5348c9;
-	/* Darker purple on hover */
+  fill: #5348c9; /* Darker purple on hover */
+}
+h3{
+  color: #a8a8a8;
+  font-size: 0.7rem;
+  opacity: 0.7;
+
+  margin-top: 10px ;
+  line-height: 1.5;
+  /* Alignment and layout */
+  text-align: center;
+  width: 100%;   
+
+  font-weight: lighter;
+
 }
