@@ -10,7 +10,7 @@
     width: 360px;
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     box-sizing: border-box;
     background-color: var(--background);
     color: var(--text);
@@ -158,4 +158,18 @@
 
 .donate-btn:hover svg {
   fill: #5348c9; /* Darker purple on hover */
+}
+h3{
+  color: #a8a8a8;
+  font-size: 0.7rem;
+  opacity: 0.7;
+
+  margin-top: 10px ;
+  line-height: 1.5;
+  /* Alignment and layout */
+  text-align: center;
+  width: 100%;   
+
+  font-weight: lighter;
+
 }

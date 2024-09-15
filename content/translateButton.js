@@ -54,18 +54,35 @@ class TranslateButton {
        
 
         button.appendChild(buttonText)
+        let isTranslating = false;  // Flag to track if the button is in translating state
 
         button.addEventListener('mouseover', () => {
-            button.style.width = "auto"
-            buttonText.style.opacity = "1"
-            buttonText.innerHTML = 'Translate'
-            buttonText.style.color = "#FFFFFF"
-        })
-
+            if (!isTranslating) {  // Only show "Translate" if not currently translating
+                button.style.width = "auto";
+                buttonText.style.opacity = "1";
+                buttonText.innerHTML = 'Translate';
+                buttonText.style.color = "#FFFFFF";
+            }
+        });
+        
         button.addEventListener('mouseleave', () => {
-            button.style.width = "26px"
-            buttonText.style.opacity = "0"
-        })
+            if (!isTranslating) {  // Only hide text if not currently translating
+                button.style.width = "26px";
+                buttonText.style.opacity = "0";
+            }
+        });
+        
+        button.addEventListener('click', () => {
+            isTranslating = true;  // Set the flag to true on click
+            buttonText.innerHTML = 'Translating...';
+            button.style.width = "auto";
+            buttonText.style.display = "inline";
+            buttonText.style.opacity = "1";
+            button.style.backgroundColor = "#292929";
+            buttonText.style.color = "#FFFFFF";
+            button.disabled = true;
+        });
+        
 
         return button
     }
