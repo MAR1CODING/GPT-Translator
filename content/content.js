@@ -30,6 +30,7 @@ function main() {
         answerHTML.id = "answer"+answer_ids.length-1
         answer_ids.push(answerHTML.id)
         articles.push(answer)
+
     })
 
 

@@ -1,15 +1,75 @@
 import { getAvailableLanguages } from "./translator.js";
 
-const selectedLanguageHTML = document.getElementById('selected-language');
-const languageInput = document.getElementById('language-input');
-const languagesList = document.getElementById('languages-list');
-const dropdownButton = document.getElementById('dropdownButton');
-const myDropdown = document.getElementById('myDropdown');
-const loadingIndicator = document.getElementById('loading-indicator');
+let selectedLanguageHTML
+let languageInput
+let languagesList
+let dropdownButton
+let myDropdown
+let loadingIndicator
 
 
 let availableLanguages;
 let currentLanguage;
+
+
+const donateButton = document.getElementById('donateButton')
+
+const extensionHTML = document.getElementById('extension')
+const warningHTML = document.getElementById('warning')
+
+
+// Initialize the language when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initializeExtension);
+
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn') && !myDropdown?.contains(event.target) && !languageInput?.contains(event.target)) {
+        if (myDropdown?.style?.display === 'block') {
+            myDropdown.style.display = 'none'; // Hide the dropdown
+            languageInput.style.display = 'none'; // Hide the search bar
+        }
+    }
+}
+
+
+// Redirects user to donate page when donateButton clicked
+donateButton.addEventListener('click', () => {
+    const extensionId = chrome.runtime.id; // Get the extension's ID dynamically
+    const url = `chrome-extension://${extensionId}/donate/donate.html`; // Path to the new page
+    chrome.tabs.create({ url });
+});
+
+
+
+function initializeExtension() {
+    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+        let activeTabURL = tabs[0].url;
+
+        console.log("ActiveUrl: ", activeTabURL)
+        
+        if(activeTabURL.includes("chatgpt.com")) {
+            // Show extension
+            extensionHTML.style.display = "block"
+            warningHTML.style.display = "none"
+
+            // get all required elements
+            selectedLanguageHTML = document.getElementById('selected-language');
+            languageInput = document.getElementById('language-input');
+            languagesList = document.getElementById('languages-list');
+            dropdownButton = document.getElementById('dropdownButton');
+            myDropdown = document.getElementById('myDropdown');
+            loadingIndicator = document.getElementById('loading-indicator');
+
+            // initialize the 
+            await initializeLanguage()
+
+            languageInput.addEventListener('input', filterFunction);
+            dropdownButton.addEventListener('click', toggleDropdown);
+        }
+    });
+}
+
 
 async function setUpLanguagesList(languages) {
     if (!languages || languages.length === 0) {
@@ -34,8 +94,6 @@ async function initializeLanguage() {
     myDropdown.style.display ='none' ; 
     myDropdown.classList.remove("show");
 
-
-
     try {
         availableLanguages = await getAvailableLanguages();
         const storedLanguage = await chrome.storage.local.get('language');
@@ -59,14 +117,6 @@ async function initializeLanguage() {
         selectedLanguageHTML.style.display = 'inline';
     }
 }
-// rest of your existing code ...
-
-// Initialize the language when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', initializeLanguage);
-
-
-languageInput.addEventListener('input', filterFunction);
-
 
 async function selectLanguage(languageId) {
     const language = availableLanguages.find(lang => lang.language === languageId);
@@ -111,23 +161,3 @@ function toggleDropdown() {
     }
 }
 
-dropdownButton.addEventListener('click', toggleDropdown);
-
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn') && !myDropdown.contains(event.target) && !languageInput.contains(event.target)) {
-        if (myDropdown.style.display === 'block') {
-            myDropdown.style.display = 'none'; // Hide the dropdown
-            languageInput.style.display = 'none'; // Hide the search bar
-        }
-    }
-}
-
-initializeLanguage();
-
-document.getElementById('donateButton').addEventListener('click', () => {
-    const extensionId = chrome.runtime.id; // Get the extension's ID dynamically
-    const url = `chrome-extension://${extensionId}/donate/donate.html`; // Path to the new page
-    chrome.tabs.create({ url });
-});

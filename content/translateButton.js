@@ -11,7 +11,6 @@ class TranslateButton {
 
     }
 
-
     generateTranslateButton(wrapper) {
         const button = document.createElement('button')
         
@@ -55,10 +54,17 @@ class TranslateButton {
 
         button.appendChild(buttonText)
 
-        button.addEventListener('mouseover', () => {
+        button.addEventListener('mouseover', async () => {
             button.style.width = "auto"
             buttonText.style.opacity = "1"
-            buttonText.innerHTML = 'Translate'
+
+
+            const language = await chrome.storage?.local?.get('language')
+            if(!language || ! language["language"])
+                buttonText.innerHTML = 'Choose a language first'
+            else
+                buttonText.innerHTML = 'Translate'
+           
             buttonText.style.color = "#FFFFFF"
         })
 
