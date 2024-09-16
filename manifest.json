@@ -18,7 +18,9 @@
 	"background": {
 		"service_worker": "background.js"
 	},
-	
+	"content_security_police": {
+		"extension_pages": "script-src 'self'; object-src 'self';"
+	},
 	"content_scripts": [
 		{
 			"matches": [
