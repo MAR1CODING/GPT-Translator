@@ -56,20 +56,22 @@ class TranslateButton {
         let isTranslating = false;  // Flag to track if the button is in translating state
 
         button.addEventListener('mouseover', async () => {
-            button.style.width = "auto";
-            buttonText.style.opacity = "1";
-            if(!language || ! language["language"])
+
+            const language = await chrome.storage?.local?.get('language')
+
+            if(!language || ! language["language"]){
+                button.style.width = "auto";
+                buttonText.style.opacity = "1";
                 buttonText.innerHTML = 'Choose a language first'
-            else if (!isTranslating) {  // Only show "Translate" if not currently translating
+                buttonText.style.color = "#FFFFFF";
                 
-                const language = await chrome.storage?.local?.get('language')
-                if(!language || ! language["language"])
-                    buttonText.innerHTML = 'Choose a language first'
-                else
-                    buttonText.innerHTML = 'Translate';
+            }else if (!isTranslating) {  // Only show "Translate" if not currently translating
                 
+                button.style.width = "auto";
+                buttonText.style.opacity = "1";
+                buttonText.innerHTML = 'Translate';
+                buttonText.style.color = "#FFFFFF";
             }
-            buttonText.style.color = "#FFFFFF";
         });
         
         button.addEventListener('mouseleave', () => {

@@ -27,12 +27,10 @@ class Answer {
         this.translateButton = new TranslateButton(buttonWrapper)
 
         this.translateButton.button.addEventListener('click', async (event) => {
-            const language = await chrome.storage?.local?.get('language')
-        
-            if(language && language["language"]) {
-                this.translateButton.buttonWrapper.innerHTML = ""
-                this.translateContent(language['language'])
-            }
+            // this.translateButton.injectDropdownMenu()
+            const language = await chrome.storage.local.get('language')
+            this.translateContent(language['language'])
+
         });
     }
 

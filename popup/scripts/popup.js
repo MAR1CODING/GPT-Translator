@@ -5,8 +5,6 @@ let languageInput
 let languagesList
 let dropdownButton
 let myDropdown
-let loadingIndicator
-
 
 let availableLanguages;
 let currentLanguage;
@@ -59,13 +57,25 @@ function initializeExtension() {
             languagesList = document.getElementById('languages-list');
             dropdownButton = document.getElementById('dropdownButton');
             myDropdown = document.getElementById('myDropdown');
-            loadingIndicator = document.getElementById('loading-indicator');
 
             // initialize the 
             await initializeLanguage()
 
             languageInput.addEventListener('input', filterFunction);
             dropdownButton.addEventListener('click', toggleDropdown);
+            selectedLanguageHTML.addEventListener('click', toggleDropdown);
+            dropdownButton.querySelector("svg").addEventListener('click', toggleDropdown);
+
+            let currentLanguage;
+            dropdownButton.addEventListener('mouseover', (event) => {
+                currentLanguage = selectedLanguageHTML.textContent
+                selectedLanguageHTML.textContent = "Choose Language"
+            });
+
+            dropdownButton.addEventListener('mouseout', (event) => {
+                selectedLanguageHTML.textContent = currentLanguage
+                
+            });
         }
     });
 }
@@ -88,8 +98,7 @@ async function setUpLanguagesList(languages) {
 }
 
 async function initializeLanguage() {
-    selectedLanguageHTML.style.display = 'none';
-    loadingIndicator.style.display = 'inline';
+    selectedLanguageHTML.textContent = "Loading..."
     languageInput.style.display = 'none'; // Hide the search bar initially
     myDropdown.style.display ='none' ; 
     myDropdown.classList.remove("show");
@@ -112,9 +121,8 @@ async function initializeLanguage() {
         }
 
         await setUpLanguagesList(availableLanguages);
-    } finally {
-        loadingIndicator.style.display = 'none';
-        selectedLanguageHTML.style.display = 'inline';
+    } catch (err) {
+        console.log("Error: ", err)
     }
 }
 

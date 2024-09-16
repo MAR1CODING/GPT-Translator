@@ -14,7 +14,6 @@ copyButtonSol.addEventListener('click', () => copyToClipboard(solAddress));
 function copyToClipboard(address) {
     console.log('Button clicked'); // Debugging line
     navigator.clipboard.writeText(address).then(() => {
-        console.log('Text copied'); // Debugging line
-        
+        alert("Address copied")
     })
 }
