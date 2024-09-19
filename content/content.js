@@ -1,5 +1,6 @@
 
 
+
 if (window.location.href.includes('chatgpt.com')) {
     setInterval(() => main(), 3000)
 }
@@ -16,7 +17,6 @@ function main() {
 
     // Obtains last Message
     const answers = document.querySelectorAll(answerSelector)
-
 
     answers.forEach(answerHTML => {
         if(answerHTML.id && answer_ids.includes(answerHTML.id))

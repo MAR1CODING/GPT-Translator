@@ -4,6 +4,7 @@ class TranslateButton {
 
 
     constructor(buttonWrapper) {
+
         this.buttonWrapper = buttonWrapper
 
         this.button = this.generateTranslateButton()

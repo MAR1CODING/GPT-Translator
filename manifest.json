@@ -5,8 +5,7 @@
 	"description": "Translate your chatgpt conversations to your native language so you don't miss on the power of chatgpt",
 	"permissions": [
 		"activeTab",
-		"storage",
-		"scripting"
+		"storage"
 	],	
 	"icons": {
 		"16": "images/icon-16.png",
@@ -18,13 +17,13 @@
 	"background": {
 		"service_worker": "background.js"
 	},
-	"content_security_police": {
+	"content_security_policy": {
 		"extension_pages": "script-src 'self'; object-src 'self';"
 	},
 	"content_scripts": [
 		{
 			"matches": [
-				"<all_urls>"
+				"https://chatgpt.com/*"
 			],
 			"js": [
 				"content/content.js", 

@@ -158,7 +158,9 @@ function filterFunction() {
     }
 }
 
-function toggleDropdown() {
+function toggleDropdown(event) {
+    event.preventDefault()
+    
     if (myDropdown.style.display === 'block') {
         myDropdown.style.display = 'none'; // Hide dropdown
         languageInput.style.display = 'none'; // Hide search bar

@@ -8,19 +8,20 @@ class Answer {
     contentSelector = 'div:nth-child(1)'
     domAnswerContent = null
 
-    toolBarSelector = 'div.mt-1:nth-child(2) > div.p-1'
+    toolBarSelector = 'div:nth-child(2) > div.p-1'
 
 
     constructor(domAnswer) {
         this.domAnswer = domAnswer
         this.domAnswerContent = domAnswer.querySelector(this.contentSelector)
 
-        const toolBar = this.domAnswer.querySelector(this.toolBarSelector)
-
-        if (!toolBar) {
+        const toolBarsObtained = this.domAnswer.querySelectorAll(this.toolBarSelector)
+        if (!toolBarsObtained) {
             this.error = true
             return;
         }
+        const toolBar = toolBarsObtained[toolBarsObtained.length-1];
+
         const buttonWrapper = document.createElement('div')
         toolBar.appendChild(buttonWrapper)
 
@@ -36,8 +37,6 @@ class Answer {
 
 
     async translateContent(to_language) {
-        console.log("To language: ", to_language);
-
         // Clone the content
         const contentToTranslate = this.domAnswerContent.cloneNode(true);
 
