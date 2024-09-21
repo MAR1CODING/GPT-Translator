@@ -197,3 +197,12 @@ h3 {
 	font-weight: lighter;
 
 }
+
+#dropdownButton {
+    
+    cursor: pointer;
+}
+
+#selected-language, #dropdownButton svg {
+    pointer-events: none;
+}
